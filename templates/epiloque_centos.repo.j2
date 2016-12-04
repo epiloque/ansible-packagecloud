@@ -1,0 +1,23 @@
+[epiloque_centos]
+name=epiloque_centos
+baseurl=https://packagecloud.io/epiloque/centos/el/7/$basearch
+repo_gpgcheck=1
+gpgcheck=1
+enabled=1
+gpgkey=https://packagecloud.io/epiloque/centos/gpgkey
+       https://epiloque.github.io/packaging.pub
+sslverify=1
+sslcacert=/etc/pki/tls/certs/ca-bundle.crt
+metadata_expire=300
+
+[epiloque_centos-source]
+name=epiloque_centos-source
+baseurl=https://packagecloud.io/epiloque/centos/el/7/SRPMS
+repo_gpgcheck=1
+gpgcheck=1
+enabled=1
+gpgkey=https://packagecloud.io/epiloque/centos/gpgkey
+       https://epiloque.github.io/packaging.pub
+sslverify=1
+sslcacert=/etc/pki/tls/certs/ca-bundle.crt
+metadata_expire=300
