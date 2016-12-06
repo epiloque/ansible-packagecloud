@@ -1,25 +1,4 @@
 ---
 
-- name: retrieving packagecloud gpg key
-  rpm_key: state=present key=https://packagecloud.io/epiloque/centos/gpgkey
-
-- name: retrieving packaging@epiloque.com gpg key
-  rpm_key: state=present key=https://epiloque.github.io/packaging.pub
-
-- name: install packagecloud dependencies
-  action: "{{ ansible_pkg_mgr }} name={{ item }} state=present"
-  with_items:
-    - pygpgme
-    - yum-utils
-
-- name: add packagecloud repository
-  template:
-    src: templates/epiloque_centos.repo.j2
-    dest: "/etc/yum.repos.d/epiloque_centos.repo"
-    mode: 0644
-    owner: root
-    group: root
-
-- name: yum makecache
-  shell: yum -q makecache -y warn=no
-  changed_when: false
+- include: packagecloud.yml
+  when: ansible_os_family == "RedHat"
