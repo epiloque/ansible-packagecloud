@@ -19,7 +19,8 @@
     mode: 0644
     owner: root
     group: root
+  register: epiloque_repository
 
 - name: yum makecache
   shell: yum -q makecache -y warn=no
-  changed_when: false
+  when: epiloque_repository | changed
