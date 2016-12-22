@@ -22,5 +22,5 @@
   register: epiloque_repository
 
 - name: yum makecache
-  shell: yum -q makecache -y warn=no
+  shell: yum -q -y makecache fast warn=no
   when: epiloque_repository | changed
