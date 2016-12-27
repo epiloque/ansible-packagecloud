@@ -9,6 +9,7 @@
 - name: install packagecloud dependencies
   action: "{{ ansible_pkg_mgr }} name={{ item }} state=present"
   with_items:
+    - ca-certificates
     - pygpgme
     - yum-utils
 
