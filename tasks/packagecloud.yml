@@ -1,17 +1,17 @@
 ---
 
-- name: retrieving packagecloud gpg key
-  rpm_key: state=present key=https://packagecloud.io/epiloque/centos/gpgkey
-
-- name: retrieving packaging@epiloque.com gpg key
-  rpm_key: state=present key=https://epiloque.github.io/packaging.pub
-
 - name: install packagecloud dependencies
   action: "{{ ansible_pkg_mgr }} name={{ item }} state=present"
   with_items:
     - ca-certificates
     - pygpgme
     - yum-utils
+
+- name: retrieving packagecloud gpg key
+  rpm_key: state=present key=https://packagecloud.io/epiloque/centos/gpgkey
+
+- name: retrieving packaging@epiloque.com gpg key
+  rpm_key: state=present key=https://epiloque.github.io/packaging.pub
 
 - name: add packagecloud repository
   template:
