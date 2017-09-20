@@ -1,4 +1,4 @@
 ---
 
-- include: packagecloud.yml
+- include_tasks: packagecloud.yml
   when: ansible_os_family == "RedHat"
