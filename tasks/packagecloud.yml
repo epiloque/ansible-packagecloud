@@ -8,20 +8,20 @@
     - yum-utils
 
 - name: retrieving packagecloud gpg key
-  rpm_key: state=present key=https://packagecloud.io/epiloque/centos/gpgkey
+  rpm_key: state=present key=https://packagecloud.io/epiloque/ec/gpgkey
 
 - name: retrieving packaging@epiloque.com gpg key
   rpm_key: state=present key=https://epiloque.github.io/packaging.pub
 
 - name: add packagecloud repository
   template:
-    src: templates/epiloque_centos.repo.j2
-    dest: "/etc/yum.repos.d/epiloque_centos.repo"
+    src: templates/epiloque_ec.repo.j2
+    dest: "/etc/yum.repos.d/epiloque_ec.repo"
     mode: 0644
     owner: root
     group: root
-  register: epiloque_repository
+  register: packagecloud_ec_repository
 
 - name: yum makecache
   shell: yum -q -y makecache fast warn=no
-  when: epiloque_repository | changed
+  when: packagecloud_ec_repository | changed
