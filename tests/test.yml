@@ -11,5 +11,6 @@
     - name: install an rpm from the packagecloud repo
       when: ansible_os_family == "RedHat"
       yum:
-        name: mosh-1.3.2
+        name: mosh
         state: present
+        update_cache: yes

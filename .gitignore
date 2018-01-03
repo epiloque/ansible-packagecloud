@@ -1,4 +1,5 @@
-tests/roles/provision_docker
 *.retry
 .molecule
 playbook.yml
+tests/roles/*
+!tests/roles/packagecloud
