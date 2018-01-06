@@ -16,14 +16,14 @@
     group: root
   register: packagecloud_repository
 
-- name: retrieving packagecloud gpg key(s)
+- name: retrieving packagecloud gpg keys
   rpm_key:
-    state=present
-    key="{{ item }}"
+    key: "{{ item }}"
+    state: present
   with_items:
-    - https://packagecloud.io/gpg.key
-    - https://packagecloud.io/escapace/stack/gpgkey
-    - https://escapace.github.io/security/GPG-KEY-ESCAPACE
+    - 'https://packagecloud.io/gpg.key'
+    - 'https://packagecloud.io/escapace/stack/gpgkey'
+    - 'https://escapace.github.io/security/GPG-KEY-ESCAPACE'
   when: packagecloud_repository | changed
 
 - name: yum makecache
