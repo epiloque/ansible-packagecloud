@@ -1,11 +1,9 @@
 ---
 
-- name: install packagecloud dependencies
-  action: "{{ ansible_pkg_mgr }} name={{ item }} state=present"
-  with_items:
-    - ca-certificates
-    - pygpgme
-    - yum-utils
+- name: install packages
+  package:
+    name: ["ca-certificates", "pygpgme", "yum-utils"]
+    state: present
 
 - name: add packagecloud repository
   template:
@@ -21,11 +19,10 @@
     key: "{{ item }}"
     state: present
   with_items:
-    - 'https://packagecloud.io/gpg.key'
     - 'https://packagecloud.io/escapace/stack/gpgkey'
     - 'https://escapace.github.io/security/GPG-KEY-ESCAPACE'
-  when: packagecloud_repository | changed
+  when: packagecloud_repository is changed
 
 - name: yum makecache
   shell: yum -q -y makecache fast warn=no
-  when: packagecloud_repository | changed
+  when: packagecloud_repository is changed
