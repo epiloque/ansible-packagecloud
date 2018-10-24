@@ -21,7 +21,6 @@
   with_items:
     - 'https://packagecloud.io/escapace/stack/gpgkey'
     - 'https://escapace.github.io/security/GPG-KEY-ESCAPACE'
-  when: packagecloud_repository is changed
 
 - name: yum makecache
   shell: yum -q -y makecache fast warn=no
