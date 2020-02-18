@@ -1,8 +1,9 @@
 ---
 
+
 - name: install packages
   package:
-    name: ["ca-certificates", "pygpgme", "yum-utils"]
+    name: ["ca-certificates", "python3-gpg", "yum-utils"]
     state: present
 
 - name: add packagecloud repository
@@ -21,7 +22,3 @@
   with_items:
     - 'https://packagecloud.io/escapace/stack/gpgkey'
     - 'https://escapace.github.io/security/GPG-KEY-ESCAPACE'
-
-- name: yum makecache
-  shell: yum -q -y makecache fast warn=no
-  when: packagecloud_repository is changed
